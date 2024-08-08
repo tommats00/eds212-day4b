@@ -1,0 +1,44 @@
+---
+title: "Day 4 Afternoon Session"
+author: "Tom Gibbens-Matsuyama"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+# load libraries
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+
+# check out the column names ----
+names(penguins)
+
+# look at the dimensions of the data frame ----
+# spits out number of rows and then number of columns
+dim(penguins)
+
+# get a summary of the df ----
+summary(penguins)
+
+# get a summary using {skimr} ----
+skimr::skim(penguins)
+
+# head and tail ----
+head(penguins)
+
+tail(penguins)
+
+# pairsplot ----
+GGally::ggpairs(penguins, 
+                columns = 3:6, 
+                ggplot2::aes(color = species))
+
+# create histogram of penguin flipper lengths ----
+ggplot(data = penguins, aes(x = flipper_length_mm, fill = species)) +
+  geom_histogram() + xlab("Flipper Length in mm") 
+```
+
